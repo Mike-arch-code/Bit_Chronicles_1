@@ -1,27 +1,17 @@
 package com.example.bit_chronicles_1
 
-/**
- * A sealed hierarchy describing the state of the text generation.
- */
 sealed interface UiState {
 
-    /**
-     * Empty state when the screen is first shown
-     */
     object Initial : UiState
 
-    /**
-     * Still loading
-     */
     object Loading : UiState
 
-    /**
-     * Text has been generated
-     */
-    data class Success(val outputText: String) : UiState
+    data class Success(val messages: List<Message>) : UiState
 
-    /**
-     * There was an error generating text
-     */
-    data class Error(val errorMessage: String) : UiState
+    data class Error(val errorMessage: String, val messages: List<Message> = emptyList()) : UiState
 }
+
+data class Message(
+    val text: String,
+    val isFromUser: Boolean
+)
