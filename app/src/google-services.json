@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "413920135302",
+    "project_id": "bit-chronicles",
+    "storage_bucket": "bit-chronicles.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413920135302:android:2291d6eda8285e7f0ba907",
+        "android_client_info": {
+          "package_name": "com.example.bit_chronicles_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpgtXAxEtxqA_TueXz0PNM1SXY1GVkuR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

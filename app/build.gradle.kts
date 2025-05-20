@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -18,11 +19,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // === AÑADE ESTA LÍNEA PARA DEFINIR API_KEY EN BuildConfig ===
-        // Reemplaza "YOUR_ACTUAL_API_KEY_HERE" con tu clave real.
-        // Mantén las comillas dobles escapadas \" alrededor del valor.
+
         buildConfigField("String", "API_KEY", "\"AIzaSyDFg56YfweggI8Ja9PdYW5AjovYNDcw0Ms\"")
-        // ==========================================================
     }
 
     buildTypes {
@@ -33,11 +31,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-        // Si quieres la clave también en builds de depuración de forma explícita,
-        // aunque default config ya la incluye.
-        // debug {
-        //    buildConfigField("String", "API_KEY", "\"TU_CLAVE_DE_API_AQUI\"")
-        // }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -48,7 +41,7 @@ android {
     }
     buildFeatures {
         compose = true
-        buildConfig = true // Asegúrate de que esta línea esté en 'true' para generar BuildConfig
+        buildConfig = true
     }
 }
 
@@ -63,7 +56,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    // Asegúrate de que esta dependencia para Gemini API esté incluida
     implementation(libs.generativeai)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -72,4 +64,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Dependencias de Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-database")
 }
